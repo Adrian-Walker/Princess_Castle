@@ -1,7 +1,8 @@
 const readlineSync = require('readline-sync')
 
+// Charactrer constructor
 class Character {
-    constructor(name, totalCoins, status, hasStar = false, gameActive = true) {
+    constructor(name, totalCoins, status, hasStar, gameActive) {
         this.name = name
         this.totalCoins = totalCoins
         this.status = status
@@ -10,37 +11,38 @@ class Character {
     }
 
 
-
+    // Pick character
     setName(namePicked) {
-        let players = [Mario, Luigi]
-        namePicked = readlineSync.keyInSelect(players, "Pick Player: ")
-        if (namePicked === '1') {
+        if (namePicked === 'Mario') {
             this.name = "Mario"
-        }
-
-        if (namePicked === '2') {
+        } else if (namePicked === 'Luigi') {
             this.name = "Luigi"
+        } else {
+            this.name = 'Wrong Name'
         }
     }
-
+    // Add coin
     addCoin() {
+        console.log('Added coin!')
         this.totalCoins + 1
     }
-
+    // If Character gets hit
     gotHit() {
-        if (this.status = 'Powered Up') {
+        console.log(`${Mario.name} got hit!`)
+        if (this.status === 'Powered Up') {
             this.status = 'Big'
-        } else if (this.status = 'Big') {
+        } else if (this.status === 'Big') {
             this.status = 'Small'
-        } else if (this.status = 'Small') {
+        } else if (this.status === 'Small') {
             this.status = 'Dead'
-        } else if (this.status = 'Dead') {
+        } else if (this.status === 'Dead') {
             gameActive = false
         }
     }
 
     // Why is this undefined?
     gotPowerUp() {
+        console.log('Powered Up!')
         if (this.status = 'Small') {
             this.status = 'Big'
         } else if (this.status = 'Big') {
@@ -49,7 +51,7 @@ class Character {
     }
 
 
-
+    // Print stat to the console
     print() {
         console.log(`Name: ${this.name}`)
         console.log(`Coins: ${this.totalCoins}`)
@@ -58,22 +60,25 @@ class Character {
     }
 
 }
+// Character variables
+const Mario = new Character('Name', 1, 'Small', false, false)
+Mario.setName('Mario')
 
-function randomRange(min, max) {
-    return Math.random(min, max) * (2 - 0) + 0;
+// Generate random range for got hit, powwer up and add coin
 
-}
+const time = setInterval(() => {
+    const randomNum = Math.floor(Math.random() * 3)
+    if (randomNum === 0) {
+        return Mario.gotHit()
+    } else if (randomNum === 1) {
+        return Mario.gotPowerUp()
+    } else if (randomNum === 2) {
+        return Mario.addCoin()
+    }
 
-if (randomRange = 0) {
-    return gotHit()
-} else if (randomRange = 1) {
-    return gotPowerUp()
-} else if (randomRange = 2) {
-    return addCoin()
-}
-setInterval(() => {
-    randomRange()
-}, 2000);
+    if (Mario.gameActive === true || Mario.status === 'Dead') {
+        clearInterval(time)
+    }
 
-const Mario = new Character('Mario', 1, 'Small')
-const Luigi = new Character('Luigi', 0, 'Small')
+    Mario.print()
+}, 1000);
