@@ -6,10 +6,13 @@ class Character {
         this.totalCoins = totalCoins
         this.status = status
         this.hasStar = hasStar
+        this.gameActive = gameActive
     }
 
+
+
     setName(namePicked) {
-        let players = ['Mario', 'Luigi']
+        let players = [Mario, Luigi]
         namePicked = readlineSync.keyInSelect(players, "Pick Player: ")
         if (namePicked === '1') {
             this.name = "Mario"
@@ -36,6 +39,7 @@ class Character {
         }
     }
 
+    // Why is this undefined?
     gotPowerUp() {
         if (this.status = 'Small') {
             this.status = 'Big'
@@ -56,17 +60,20 @@ class Character {
 }
 
 function randomRange(min, max) {
-    return Math.random() * (2 - 0) + 0;
+    return Math.random(min, max) * (2 - 0) + 0;
+
 }
 
 if (randomRange = 0) {
-    gotHit()
+    return gotHit()
 } else if (randomRange = 1) {
-    gotPowerUp()
+    return gotPowerUp()
 } else if (randomRange = 2) {
-    addCoin()
+    return addCoin()
 }
-
 setInterval(() => {
     randomRange()
-}, 5000);
+}, 2000);
+
+const Mario = new Character('Mario', 1, 'Small')
+const Luigi = new Character('Luigi', 0, 'Small')
