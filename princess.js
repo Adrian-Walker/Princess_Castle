@@ -18,7 +18,7 @@ class Character {
         } else if (namePicked === 'Luigi') {
             this.name = "Luigi"
         } else {
-            this.name = 'Please pick a name .'
+            this.name === 'Please pick a name .'
         }
     }
     // Add coin
@@ -55,15 +55,17 @@ class Character {
 
     // Print stat to the console
     print() {
+        console.log('')
         console.log(`Name: ${this.name}`)
         console.log(`Coins: ${this.totalCoins}`)
         console.log(`Status: ${this.status}`)
         console.log(`Stars: ${this.hasStar}`)
+        console.log('')
     }
 
 }
 // Character variables
-const Mario = new Character('Name', 1, 'Small', false, false)
+const Mario = new Character('Name', 1, 'Small', false, true)
 Mario.setName('Mario')
 
 // Generate random range for got hit, powwer up and add coin
@@ -71,14 +73,14 @@ Mario.setName('Mario')
 const time = setInterval(() => {
     const randomNum = Math.floor(Math.random() * 3)
     if (randomNum === 0) {
-        return Mario.gotHit()
+        Mario.gotHit()
     } else if (randomNum === 1) {
-        return Mario.gotPowerUp()
+        Mario.gotPowerUp()
     } else if (randomNum === 2) {
-        return Mario.addCoin()
+        Mario.addCoin()
     }
 
-    if (Mario.gameActive === true || Mario.status === 'Dead') {
+    if (Mario.gameActive === false || Mario.status === 'Dead') {
         clearInterval(time)
     }
 
