@@ -18,13 +18,13 @@ class Character {
         } else if (namePicked === 'Luigi') {
             this.name = "Luigi"
         } else {
-            this.name = 'Wrong Name'
+            this.name = 'Please pick a name .'
         }
     }
     // Add coin
     addCoin() {
         console.log('Added coin!')
-        this.totalCoins + 1
+        this.totalCoins += 1
     }
     // If Character gets hit
     gotHit() {
@@ -47,6 +47,8 @@ class Character {
             this.status = 'Big'
         } else if (this.status = 'Big') {
             this.status = 'Powered Up'
+        } else if (this.status = 'Powered Up') {
+            this.hasStar === true
         }
     }
 
